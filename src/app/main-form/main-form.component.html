@@ -1,0 +1,55 @@
+<form
+  [formGroup]="questionForm"
+  (ngSubmit)="onSubmit()"
+  class="row justify-content-center"
+>
+  <div class="col-8">
+    <div class="mt-5">
+      <label class="form-label" for="field1"
+        >Ako ťažké je pre vás vypnúť sociálnu sieť</label
+      >
+      <select class="form-select" id="field1" formControlName="field1">
+        <option [value]="null" disabled>Vyberte možnosť</option>
+        <option *ngFor="let option of question1" [value]="option.value">
+          {{ option.viewValue }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mt-5">
+      <label class="form-label" for="field2"
+        >Ako sa cítite pri prezeraní sociálnych sietí</label
+      >
+      <select class="form-select" id="field2" formControlName="field2">
+        <option [value]="null" disabled>Vyberte možnosť</option>
+        <option *ngFor="let option of question2" [value]="option.value">
+          {{ option.viewValue }}
+        </option>
+      </select>
+    </div>
+
+    <div class="row mt-5">
+      <p>Aký vplyv majú sociálne siete na Váš spánok?</p>
+      <div
+        *ngFor="let question of question3"
+        class="col d-flex flex-column justify-content-between align-items-center text-center"
+      >
+        <label class="form-check-label" [for]="question.value">
+          {{ question.viewValue }}
+        </label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="field3"
+          [id]="question.value"
+          formControlName="field3"
+          [value]="question.value"
+        />
+      </div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <button class="btn btn-primary px-4" type="submit">Vyhodnoť</button>
+    </div>
+  </div>
+</form>
